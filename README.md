@@ -24,12 +24,6 @@ A modern web-based inventory management system built with Flask and PostgreSQL, 
 - PostgreSQL
 - Virtual environment (already set up)
 
-### Database Setup
-The database is already configured with:
-- Database: `inventory`
-- User: `nixon`
-- Password: `IamWainaina@2002`
-- 100 sample products loaded
 
 ### Running the Application
 
