@@ -133,4 +133,3 @@ All prices are displayed in Kenyan Shillings using the format:
 
 ---
 
-Created with ❤️ for efficient inventory management in Kenya
