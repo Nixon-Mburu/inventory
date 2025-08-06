@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management - Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/common.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Inventory</h2>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="{{ url_for('index') }}" class="nav-link active">Dashboard</a></li>
+                    <li><a href="{{ url_for('products') }}" class="nav-link">Products</a></li>
+                    <li><a href="{{ url_for('reports') }}" class="nav-link">Reports</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <h1>Dashboard</h1>
+                <div class="user-info">
+                    <span>Welcome back, Admin</span>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <!-- Statistics Cards -->
+                <div class="stats-section">
+                    <div class="stat-card" data-stat="total-products">
+                        <h3>Total Products</h3>
+                        <div class="stat-number">156</div>
+                        <span class="stat-change positive">+12% from last month</span>
+                    </div>
+                    <div class="stat-card" data-stat="low-stock">
+                        <h3>Low Stock Items</h3>
+                        <div class="stat-number">8</div>
+                        <span class="stat-change warning">Needs attention</span>
+                    </div>
+                    <div class="stat-card" data-stat="categories">
+                        <h3>Total Categories</h3>
+                        <div class="stat-number">4</div>
+                        <span class="stat-change neutral">Active categories</span>
+                    </div>
+                    <div class="stat-card" data-stat="out-of-stock">
+                        <h3>Out of Stock</h3>
+                        <div class="stat-number">3</div>
+                        <span class="stat-change positive">+2% this week</span>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="activity-section">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon">📦</div>
+                            <div class="activity-content">
+                                <h4>New product added</h4>
+                                <p>Wireless Headphones - SKU: WH001</p>
+                                <span class="activity-time">2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">⚠️</div>
+                            <div class="activity-content">
+                                <h4>Low stock alert</h4>
+                                <p>Gaming Mouse - Only 3 units left</p>
+                                <span class="activity-time">4 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">📊</div>
+                            <div class="activity-content">
+                                <h4>Monthly report generated</h4>
+                                <p>July inventory summary completed</p>
+                                <span class="activity-time">1 day ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="action-buttons">
+                        <button class="action-btn primary">Add New Product</button>
+                        <button class="action-btn secondary">Generate Report</button>
+                        <button class="action-btn secondary">Manage Categories</button>
+                        <button class="action-btn secondary">Stock Update</button>
+                    </div>
+                </div>
+
+                <!-- Inventory Overview -->
+                <div class="inventory-overview">
+                    <h2>Inventory Overview</h2>
+                    <div class="overview-chart">
+                        <div class="chart-placeholder">
+                            <p>Inventory distribution chart would go here</p>
+                            <div class="chart-mock">
+                                <div class="chart-bar" style="height: 60%">Electronics</div>
+                                <div class="chart-bar" style="height: 40%">Supplies</div>
+                                <div class="chart-bar" style="height: 50%">Furniture</div>
+                                <div class="chart-bar" style="height: 35%">Groceries</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/dashboard-api.js') }}"></script>
+</body>
+</html>

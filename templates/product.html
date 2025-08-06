@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management - Products</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/product.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/common.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Inventory</h2>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="{{ url_for('index') }}" class="nav-link">Dashboard</a></li>
+                    <li><a href="{{ url_for('products') }}" class="nav-link active">Products</a></li>
+                    <li><a href="{{ url_for('reports') }}" class="nav-link">Reports</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <h1>Products</h1>
+                <div class="header-actions">
+                    <button class="btn-primary">Add New Product</button>
+                </div>
+            </header>
+
+            <div class="content">
+                <!-- Filters and Search -->
+                <div class="filters-section">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search products..." class="search-input">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                    <div class="filter-controls">
+                        <select class="filter-select" name="category">
+                            <option value="">All Categories</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="supplies">Supplies</option>
+                            <option value="furniture">Furniture</option>
+                            <option value="groceries">Groceries</option>
+                        </select>
+                        <select class="filter-select" name="status">
+                            <option value="">Stock Status</option>
+                            <option value="in-stock">In Stock</option>
+                            <option value="low-stock">Low Stock</option>
+                            <option value="out-of-stock">Out of Stock</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Products Table -->
+                <div class="table-section">
+                    <table class="products-table">
+                        <thead>
+                            <tr>
+                                <th>Product ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Products will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="page-btn" disabled>Previous</button>
+                    <span class="page-info">Page 1 of 3</span>
+                    <button class="page-btn">Next</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/products-api.js') }}"></script>
+</body>
+</html>

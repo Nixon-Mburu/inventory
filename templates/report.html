@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management - Reports</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/report.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/common.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Inventory</h2>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="{{ url_for('index') }}" class="nav-link">Dashboard</a></li>
+                    <li><a href="{{ url_for('products') }}" class="nav-link">Products</a></li>
+                    <li><a href="{{ url_for('reports') }}" class="nav-link active">Reports</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <h1>Reports</h1>
+                <div class="header-actions">
+                    <button class="btn-primary">Generate Report</button>
+                    <button class="btn-secondary">Export Data</button>
+                </div>
+            </header>
+
+            <div class="content">
+                <!-- Report Filters -->
+                <div class="filters-section">
+                    <div class="filter-group">
+                        <label for="report-type">Report Type</label>
+                        <select id="report-type" class="filter-select">
+                            <option value="inventory">Inventory Summary</option>
+                            <option value="sales">Sales Report</option>
+                            <option value="stock-movement">Stock Movement</option>
+                            <option value="low-stock">Low Stock Alert</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="date-range">Date Range</label>
+                        <select id="date-range" class="filter-select">
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="quarter">This Quarter</option>
+                            <option value="year">This Year</option>
+                            <option value="custom">Custom Range</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="category">Category</label>
+                        <select id="category" class="filter-select">
+                            <option value="">All Categories</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="supplies">Supplies</option>
+                            <option value="furniture">Furniture</option>
+                            <option value="groceries">Groceries</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Report Summary Cards -->
+                <div class="summary-section">
+                    <div class="summary-card" data-summary="total-products">
+                        <h3>Total Products</h3>
+                        <div class="summary-value">156</div>
+                        <div class="summary-change positive">+8% vs last month</div>
+                    </div>
+                    <div class="summary-card" data-summary="total-value">
+                        <h3>Total Value</h3>
+                        <div class="summary-value">KSh 5,879,900</div>
+                        <div class="summary-change positive">+12% vs last month</div>
+                    </div>
+                    <div class="summary-card" data-summary="low-stock">
+                        <h3>Low Stock Items</h3>
+                        <div class="summary-value">8</div>
+                        <div class="summary-change warning">Requires attention</div>
+                    </div>
+                    <div class="summary-card" data-summary="out-of-stock">
+                        <h3>Out of Stock</h3>
+                        <div class="summary-value">3</div>
+                        <div class="summary-change negative">+2 vs last week</div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="charts-section">
+                    <div class="chart-container">
+                        <h2>Inventory Distribution</h2>
+                        <div class="chart-placeholder">
+                            <div class="pie-chart-mock">
+                                <div class="chart-segment electronics">Electronics (45%)</div>
+                                <div class="chart-segment supplies">Supplies (25%)</div>
+                                <div class="chart-segment furniture">Furniture (20%)</div>
+                                <div class="chart-segment groceries">Groceries (10%)</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h2>Stock Movement Trend</h2>
+                        <div class="chart-placeholder">
+                            <div class="line-chart-mock">
+                                <div class="chart-grid">
+                                    <div class="chart-line"></div>
+                                    <div class="chart-points">
+                                        <span class="point" style="left: 10%; bottom: 30%"></span>
+                                        <span class="point" style="left: 25%; bottom: 45%"></span>
+                                        <span class="point" style="left: 40%; bottom: 60%"></span>
+                                        <span class="point" style="left: 55%; bottom: 40%"></span>
+                                        <span class="point" style="left: 70%; bottom: 70%"></span>
+                                        <span class="point" style="left: 85%; bottom: 55%"></span>
+                                    </div>
+                                </div>
+                                <div class="chart-labels">
+                                    <span>Jan</span>
+                                    <span>Feb</span>
+                                    <span>Mar</span>
+                                    <span>Apr</span>
+                                    <span>May</span>
+                                    <span>Jun</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Reports Table -->
+                <div class="table-section">
+                    <h2>Recent Reports</h2>
+                    <table class="reports-table">
+                        <thead>
+                            <tr>
+                                <th>Report Name</th>
+                                <th>Type</th>
+                                <th>Generated Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>July Inventory Summary</td>
+                                <td>Inventory</td>
+                                <td>2025-07-18 14:30</td>
+                                <td><span class="status completed">Completed</span></td>
+                                <td>
+                                    <button class="btn-action view">View</button>
+                                    <button class="btn-action download">Download</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Low Stock Alert Report</td>
+                                <td>Stock Alert</td>
+                                <td>2025-07-18 09:15</td>
+                                <td><span class="status completed">Completed</span></td>
+                                <td>
+                                    <button class="btn-action view">View</button>
+                                    <button class="btn-action download">Download</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Monthly Sales Analysis</td>
+                                <td>Sales</td>
+                                <td>2025-07-17 16:45</td>
+                                <td><span class="status processing">Processing</span></td>
+                                <td>
+                                    <button class="btn-action view" disabled>View</button>
+                                    <button class="btn-action download" disabled>Download</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Q2 Stock Movement</td>
+                                <td>Stock Movement</td>
+                                <td>2025-07-15 11:20</td>
+                                <td><span class="status completed">Completed</span></td>
+                                <td>
+                                    <button class="btn-action view">View</button>
+                                    <button class="btn-action download">Download</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/reports.js') }}"></script>
+</body>
+</html>
