@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from urllib.parse import quote_plus
 from urllib.parse import quote_plus
 
-# Load environment variables
+# Load environment variables.
 load_dotenv()
 
 # Get the base directory (parent of backend)
